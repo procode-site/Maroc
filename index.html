@@ -18,7 +18,7 @@
                 <span class="logo-text">Saveurs du Maroc</span>
             </a>
             
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
                 <li><a href="plats.html"><i class="fas fa-utensils"></i> Plats Traditionnels</a></li>
                 <li><a href="desserts.html"><i class="fas fa-cookie-bite"></i> Douceurs & Desserts</a></li>
@@ -46,10 +46,6 @@
                     Découvrez l'art ancestral de la cuisine marocaine, où chaque plat raconte une histoire, 
                     chaque épice dévoile un secret, et chaque saveur transporte vers les ruelles ensoleillées 
                     de Fès, Marrakech ou Chefchaouen.
-                </p>
-                <div class="hero-actions">
-                    <a href="plats.html" class="btn btn-primary">Explorer les Recettes</a>
-                    <a href="#philosophie" class="btn btn-secondary">Notre Philosophie</a>
                 </div>
             </div>
         </div>
@@ -217,5 +213,43 @@
         </div>
     </section>
 
+    <!-- Script pour le menu mobile -->
+    <script>
+        // Menu mobile toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Fermer le menu quand on clique sur un lien
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+            
+            // Fermer le menu quand on clique en dehors
+            document.addEventListener('click', (event) => {
+                if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        }
+        
+        // Fermer le menu en scrollant (sur mobile)
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
