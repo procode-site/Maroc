@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boissons Traditionnelles | Saveurs du Maroc</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .boissons-hero {
+            background: linear-gradient(rgba(10, 26, 42, 0.85), rgba(10, 26, 42, 0.9)),
+                        url('assets/images/background-zellige.png');
+            padding: 150px 0 80px;
+            text-align: center;
+            color: var(--blanc-casse);
+            margin-top: 70px;
+        }
+        
+        .boissons-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .boissons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        .boisson-card {
+            background: var(--blanc-casse);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--ombre);
+            transition: var(--transition);
+            border: 1px solid rgba(200, 157, 67, 0.1);
+        }
+        
+        .boisson-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--ombre-portee);
+        }
+        
+        .boisson-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .boisson-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .boisson-card:hover .boisson-image img {
+            transform: scale(1.05);
+        }
+        
+        .boisson-content {
+            padding: 30px;
+        }
+        
+        .boisson-content h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .boisson-content h3 i {
+            color: var(--dore);
+        }
+        
+        .boisson-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--bleu-nuit);
+            color: var(--blanc-casse);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .boisson-type.chaud {
+            background: #e74c3c;
+        }
+        
+        .boisson-type.froid {
+            background: #3498db;
+        }
+        
+        .boisson-type.rafraichissant {
+            background: #1abc9c;
+        }
+        
+        .boisson-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(10, 26, 42, 0.05);
+        }
+        
+        .boisson-table th {
+            background: var(--bleu-nuit);
+            color: var(--blanc-casse);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .boisson-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(10, 26, 42, 0.1);
+            color: var(--bleu-nuit);
+        }
+        
+        .boisson-table tr:nth-child(even) {
+            background: rgba(245, 242, 232, 0.5);
+        }
+        
+        .boisson-table tr:hover {
+            background: rgba(200, 157, 67, 0.1);
+        }
+        
+        .boisson-tips {
+            background: rgba(10, 26, 42, 0.05);
+            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            margin-top: 20px;
+            border-left: 3px solid var(--bleu-nuit);
+        }
+        
+        .boisson-tips h4 {
+            color: var(--bleu-nuit);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .boisson-tips h4 i {
+            color: var(--dore);
+        }
+        
+        .boisson-rituel {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 15px 0;
+            color: var(--bleu-nuit);
+            opacity: 0.8;
+        }
+        
+        .boisson-rituel i {
+            color: var(--dore);
+        }
+        
+        .ceremonie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            box-shadow: var(--ombre);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .ceremonie-table th {
+            background: linear-gradient(135deg, var(--dore), var(--dore-clair));
+            color: var(--bleu-nuit);
+            padding: 18px 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .ceremonie-table td {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(10, 26, 42, 0.1);
+            color: var(--bleu-nuit);
+        }
+        
+        .ceremonie-table tr:nth-child(even) {
+            background: rgba(245, 242, 232, 0.5);
+        }
+        
+        .region-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--dore);
+            color: var(--bleu-nuit);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .section-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: var(--bleu-nuit);
+            color: var(--blanc-casse);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .section-nav a:hover {
+            background: var(--dore);
+            color: var(--bleu-nuit);
+            transform: translateY(-3px);
+        }
+        
+        .other-drinks {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(10, 26, 42, 0.1);
+        }
+        
+        .other-drinks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .other-drink {
+            background: rgba(10, 26, 42, 0.05);
+            padding: 25px;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+        }
+        
+        .other-drink:hover {
+            background: rgba(200, 157, 67, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .other-drink h4 {
+            color: var(--bleu-nuit);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .other-drink h4 i {
+            color: var(--dore);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">👩🏻‍🍳</span>
+                <span class="logo-text">Saveurs du Maroc</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="plats.html"><i class="fas fa-utensils"></i> Plats Traditionnels</a></li>
+                <li><a href="desserts.html"><i class="fas fa-cookie-bite"></i> Douceurs & Desserts</a></li>
+                <li><a href="boissons.html" class="active"><i class="fas fa-mug-hot"></i> Boissons</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- En-tête des boissons -->
+    <header class="boissons-hero">
+        <div class="container">
+            <h1>Boissons Traditionnelles Marocaines</h1>
+            <p class="section-subtitle" style="color: var(--blanc-casse); opacity: 0.9; margin-bottom: 0;">
+                L'art du thé à la menthe et les délices liquides du Royaume
+            </p>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <section class="section">
+        <div class="container">
+            <div class="boissons-intro">
+                <h2 class="section-title">La Culture des Breuvages au Maroc</h2>
+                <p>Au Maroc, boire n'est jamais un simple acte de désaltération. C'est un rituel, un moment de partage, un symbole d'hospitalité. Du thé à la menthe servi avec grâce aux jus frais des marchés, chaque boisson raconte une histoire et suit des codes ancestraux.</p>
+            </div>
+
+            <!-- Thé à la menthe -->
+            <div class="boissons-grid">
+                <article class="boisson-card">
+                    <div class="boisson-image">
+                        <img src="assets/images/atay-marocain.jpg" alt="Thé à la menthe marocain">
+                    </div>
+                    <div class="boisson-content">
+                        <h3><i class="fas fa-mug-hot"></i> Atay (Thé à la Menthe) <span class="region-badge">National</span></h3>
+                        <span class="boisson-type chaud">Boisson chaude</span>
+                        
+                        <p>Symbole absolu de l'hospitalité marocaine, le thé à la menthe est bien plus qu'une simple infusion. C'est un rituel social, une cérémonie, un art de vivre.</p>
+                        
+                        <div class="boisson-rituel">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Servi aux invités en signe de bienvenue</span>
+                        </div>
+                        
+                        <table class="boisson-table">
+                            <thead>
+                                <tr>
+                                    <th>Élément</th>
+                                    <th>Importance</th>
+                                    <th>Variante</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Thé vert Gunpowder</td>
+                                    <td>Base essentielle</td>
+                                    <td>Thé vert chinois</td>
+                                </tr>
+                                <tr>
+                                    <td>Menthe fraîche (Nana)</td>
+                                    <td>Fraîcheur et parfum</td>
+                                    <td>Menthe pouliot</td>
+                                </tr>
+                                <tr>
+                                    <td>Sucre</td>
+                                    <td>Dosage selon la région</td>
+                                    <td>Miel (rare)</td>
+                                </tr>
+                                <tr>
+                                    <td>Eau</td>
+                                    <td>Qualité cruciale</td>
+                                    <td>Eau de source</td>
+                                </tr>
+                                <tr>
+                                    <td>Service</td>
+                                    <td>Hauteur et bulles</td>
+                                    <td>Théière en argent</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="boisson-tips">
+                            <h4><i class="fas fa-lightbulb"></i> L'Art du Service :</h4>
+                            <p>Verser le thé de haut pour créer une mousse (la "couronne") et oxygéner la boisson. Le premier verre est le plus fort, le dernier le plus doux.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Café marocain -->
+                <article class="boisson-card">
+                    <div class="boisson-content">
+                        <h3><i class="fas fa-coffee"></i> Café Marocain (Qahwa)</h3>
+                        <span class="boisson-type chaud">Boisson chaude</span>
+                        
+                        <p>Moins célèbre que le thé mais tout aussi raffiné, le café marocain se distingue par ses épices et son service traditionnel dans de petites tasses.</p>
+                        
+                        <div class="boisson-rituel">
+                            <i class="fas fa-clock"></i>
+                            <span>Servi après les repas ou l'après-midi</span>
+                        </div>
+                        
+                        <table class="boisson-table">
+                            <thead>
+                                <tr>
+                                    <th>Type de café</th>
+                                    <th>Caractéristiques</th>
+                                    <th>Moments de consommation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cépicé (aux épices)</td>
+                                    <td>Cardamome, gingembre, clou de girofle</td>
+                                    <td>Matin, après-midi</td>
+                                </tr>
+                                <tr>
+                                    <td>Cénature</td>
+                                    <td>Sans épices, pur arabica</td>
+                                    <td>Petit-déjeuner</td>
+                                </tr>
+                                <tr>
+                                    <td>Casucré</td>
+                                    <td>Très sucré, style turc</td>
+                                    <td>Après les repas</td>
+                                </tr>
+                                <tr>
+                                    <td>Cénoisette</td>
+                                    <td>Légèrement parfumé aux amandes</td>
+                                    <td>Toute la journée</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="boisson-tips">
+                            <h4><i class="fas fa-lightbulb"></i> Préparation Traditionnelle :</h4>
+                            <p>Faire bouillir le café avec les épices dans une "qahwaji" (cafetière spéciale). Laisser reposer avant de servir pour que le marc se dépose.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Cérémonie du thé -->
+            <div class="boissons-intro" style="margin-top: 80px;">
+                <h2 class="section-title">La Cérémonie du Thé Marocain</h2>
+                <p>Rituel codifié et gestuelle précise, préparation et service du thé suivent des règles ancestrales qui varient selon les régions.</p>
+            </div>
+
+            <table class="ceremonie-table">
+                <thead>
+                    <tr>
+                        <th>Étape</th>
+                        <th>Action</th>
+                        <th>Signification</th>
+                        <th>Durée</th>
+                        <th>Région typique</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Préparation</strong></td>
+                        <td>Rincer le thé, ajouter menthe et sucre</td>
+                        <td>Purification des feuilles</td>
+                        <td>5 minutes</td>
+                        <td>Toutes régions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Infusion</strong></td>
+                        <td>Laisser mijoter à feu doux</td>
+                        <td>Extraction des arômes</td>
+                        <td>10-15 minutes</td>
+                        <td>Fès, Marrakech</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mélange</strong></td>
+                        <td>Transvaser plusieurs fois entre théières</td>
+                        <td>Homogénéisation</td>
+                        <td>2-3 minutes</td>
+                        <td>Atlas, Sud</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Service</strong></td>
+                        <td>Verser de haut en créant de la mousse</td>
+                        <td>Oxygénation, spectacle</td>
+                        <td>Variable</td>
+                        <td>Toutes régions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dégustation</strong></td>
+                        <td>Boire par petites gorgées</td>
+                        <td>Appréciation des arômes</td>
+                        <td>15-30 minutes</td>
+                        <td>Toutes régions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Réinfusion</strong></td>
+                        <td>Ajouter eau, menthe et sucre</td>
+                        <td>Économie, convivialité</td>
+                        <td>Variable</td>
+                        <td>Campagne</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Autres boissons -->
+            <section class="other-drinks">
+                <div class="container">
+                    <h2 class="section-title">Autres Breuvages Traditionnels</h2>
+                    <p class="section-subtitle">Des jus rafraîchissants aux infusions médicinales</p>
+                    
+                    <div class="other-drinks-grid">
+                        <div class="other-drink">
+                            <h4><i class="fas fa-glass-whiskey"></i> Jus d'Orange Pressé</h4>
+                            <p>Fraîcheur immédiate des oranges marocaines, pressées à la minute sur les étals des souks et cafés.</p>
+                            <span class="boisson-type froid" style="margin-top: 10px; display: inline-block;">Boisson froide</span>
+                        </div>
+                        
+                        <div class="other-drink">
+                            <h4><i class="fas fa-apple-alt"></i> Jus de Pomme Grany</h4>
+                            <p>Jus artisanal à base de pommes grenade, spécialité de la région de Midelt, légèrement acidulé.</p>
+                            <span class="boisson-type froid" style="margin-top: 10px; display: inline-block;">Boisson froide</span>
+                        </div>
+                        
+                        <div class="other-drink">
+                            <h4><i class="fas fa-leaf"></i> Infusion de Verveine</h4>
+                            <p>Plante digestive et apaisante, consommée le soir ou après les repas copieux pour faciliter la digestion.</p>
+                            <span class="boisson-type chaud" style="margin-top: 10px; display: inline-block;">Infusion chaude</span>
+                        </div>
+                        
+                        <div class="other-drink">
+                            <h4><i class="fas fa-wine-bottle"></i> Lben (Lait Fermenté)</h4>
+                            <p>Boisson probiotique traditionnelle, rafraîchissante et digestive, souvent aromatisée à l'eau de fleur d'oranger.</p>
+                            <span class="boisson-type rafraichissant" style="margin-top: 10px; display: inline-block;">Lait fermenté</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tableau des jus -->
+                    <table class="boisson-table" style="margin-top: 40px;">
+                        <thead>
+                            <tr>
+                                <th>Jus traditionnel</th>
+                                <th>Saison</th>
+                                <th>Région de production</th>
+                                <th>Bienfaits</th>
+                                <th>Moment de consommation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jus d'orange sanguine</td>
+                                <td>Hiver/Printemps</td>
+                                <td>Berkane, Souss</td>
+                                <td>Vitamine C, énergie</td>
+                                <td>Petit-déjeuner, goûter</td>
+                            </tr>
+                            <tr>
+                                <td>Jus de carotte</td>
+                                <td>Toute l'année</td>
+                                <td>Gharb, Doukkala</td>
+                                <td>Vitamine A, peau</td>
+                                <td>Matin, en-cas</td>
+                            </tr>
+                            <tr>
+                                <td>Jus de grenade</td>
+                                <td>Automne</td>
+                                <td>Marrakech, El Kelâa</td>
+                                <td>Antioxydants</td>
+                                <td>Après-midi</td>
+                            </tr>
+                            <tr>
+                                <td>Jus d'avocat</td>
+                                <td>Été</td>
+                                <td>Khémisset, Sidi Bennour</td>
+                                <td>Énergie, satiété</td>
+                                <td>Petit-déjeuner</td>
+                            </tr>
+                            <tr>
+                                <td>Smoothie aux dattes</td>
+                                <td>Toute l'année</td>
+                                <td>Zagora, Errachidia</td>
+                                <td>Énergie rapide</td>
+                                <td>Petit-déjeuner, sport</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </section>
+
+</body>
+</html>

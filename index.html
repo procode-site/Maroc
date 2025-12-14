@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saveurs du Maroc | Gastronomie Traditionnelle</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Principale -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">👩🏻‍🍳</span>
+                <span class="logo-text">Saveurs du Maroc</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="plats.html"><i class="fas fa-utensils"></i> Plats Traditionnels</a></li>
+                <li><a href="desserts.html"><i class="fas fa-cookie-bite"></i> Douceurs & Desserts</a></li>
+                <li><a href="boissons.html"><i class="fas fa-mug-hot"></i> Boissons</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Saveurs du <span class="highlight">Maroc</span></h1>
+                <h2 class="hero-subtitle">Un Voyage Culinaire au Cœur des Traditions</h2>
+                <p class="hero-description">
+                    Découvrez l'art ancestral de la cuisine marocaine, où chaque plat raconte une histoire, 
+                    chaque épice dévoile un secret, et chaque saveur transporte vers les ruelles ensoleillées 
+                    de Fès, Marrakech ou Chefchaouen.
+                </p>
+                <div class="hero-actions">
+                    <a href="plats.html" class="btn btn-primary">Explorer les Recettes</a>
+                    <a href="#philosophie" class="btn btn-secondary">Notre Philosophie</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Philosophie -->
+    <section id="philosophie" class="section philosophy">
+        <div class="container">
+            <h2 class="section-title">La Philosophie Culinaire Marocaine</h2>
+            <p class="section-subtitle">Un héritage gastronomique millénaire</p>
+            
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Hospitalité</h3>
+                    <p>L'art d'accueillir avec générosité, où chaque repas est une célébration et chaque invité un roi.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-mortar-pestle"></i>
+                    </div>
+                    <h3>Savoir-faire</h3>
+                    <p>Des techniques transmises de mère en fille, des tajines mijotés pendant des heures aux pâtisseries délicates.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Équilibre</h3>
+                    <p>L'harmonie parfaite entre sucré et salé, épicé et doux, crémeux et croquant.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Authenticité</h3>
+                    <p>Des ingrédients locaux de qualité, des épices soigneusement sélectionnées, des recettes authentiques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Spécialités -->
+    <section class="section specialties">
+        <div class="container">
+            <h2 class="section-title">Nos Spécialités</h2>
+            <p class="section-subtitle">Un aperçu de la richesse gastronomique marocaine</p>
+            
+            <div class="specialties-grid">
+                <article class="specialty-card">
+                    <div class="specialty-image">
+                        <img src="assets/images/plat-tajine.png" alt="Tajine marocain">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Tajines</h3>
+                        <p>Le plat emblématique du Maroc, cuit lentement dans son récipient en terre cuite.</p>
+                        <a href="plats.html#tajines" class="specialty-link">Découvrir les recettes <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="specialty-card">
+                    <div class="specialty-image">
+                        <img src="assets/images/dessert-chebakia.png" alt="Chebakia marocaine">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Pâtisseries</h3>
+                        <p>Des douceurs parfumées à l'eau de fleur d'oranger et au miel, véritables œuvres d'art.</p>
+                        <a href="desserts.html" class="specialty-link">Explorer les desserts <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="specialty-card">
+                    <div class="specialty-image">
+                        <img src="assets/images/atay-marocain.jpg" alt="Thé à la menthe marocain">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Thé à la Menthe</h3>
+                        <p>La boisson nationale, symbole d'hospitalité et de convivialité, servie avec art.</p>
+                        <a href="boissons.html" class="specialty-link">Déguster les boissons <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Épices -->
+    <section class="section spices">
+        <div class="container">
+            <h2 class="section-title">Les Épices Royales</h2>
+            <p class="section-subtitle">L'âme de la cuisine marocaine</p>
+            
+            <div class="spices-content">
+                <div class="spices-text">
+                    <p>La cuisine marocaine doit sa singularité à son mélange d'épices unique, appelé <strong>Ras el Hanout</strong> ("tête d'épicerie"), qui peut contenir jusqu'à 27 épices différentes selon les maîtres épiciers.</p>
+                    
+                    <table class="spices-table">
+                        <thead>
+                            <tr>
+                                <th>Épice</th>
+                                <th>Utilisation</th>
+                                <th>Région d'origine</th>
+                                <th>Propriétés</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cumin</td>
+                                <td>Tajines, couscous</td>
+                                <td>Maroc, Iran</td>
+                                <td>Digestive, aromatique</td>
+                            </tr>
+                            <tr>
+                                <td>Cannelle</td>
+                                <td>Tajines sucrés-salés, thé</td>
+                                <td>Sri Lanka, Indonésie</td>
+                                <td>Tonifiante, réchauffante</td>
+                            </tr>
+                            <tr>
+                                <td>Safran</td>
+                                <td>Plats royaux, pâtisseries</td>
+                                <td>Taliouine (Maroc)</td>
+                                <td>Colorante, parfum délicat</td>
+                            </tr>
+                            <tr>
+                                <td>Gingembre</td>
+                                <td>Tajines, marinades</td>
+                                <td>Chine, Inde</td>
+                                <td>Piquante, aphrodisiaque</td>
+                            </tr>
+                            <tr>
+                                <td>Paprika</td>
+                                <td>Plats en sauce, merguez</td>
+                                <td>Hongrie, Espagne</td>
+                                <td>Colorante, légèrement piquante</td>
+                            </tr>
+                            <tr>
+                                <td>Curcuma</td>
+                                <td>Tous plats, riz</td>
+                                <td>Inde, Asie</td>
+                                <td>Colorante, anti-inflammatoire</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="spices-image">
+                    <img src="assets/images/epices-maroc.png" alt="Épices marocaines colorées">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Citation -->
+    <section class="citation-section">
+        <div class="container">
+            <blockquote class="citation">
+                <p>"La cuisine marocaine est un art de vivre, une poésie des sens où se mêlent les parfums d'épices, la chaleur des tajines et la douceur des pâtisseries. C'est l'hospitalité faite gastronomie."</p>
+                <footer>- Chef Fatéma Hal, ambassadrice de la cuisine marocaine</footer>
+            </blockquote>
+        </div>
+    </section>
+
+</body>
+</html>

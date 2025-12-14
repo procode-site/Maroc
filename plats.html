@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plats Traditionnels | Saveurs du Maroc</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .plats-hero {
+            background: linear-gradient(rgba(10, 26, 42, 0.85), rgba(10, 26, 42, 0.9)),
+                        url('assets/images/background-zellige.png');
+            padding: 150px 0 80px;
+            text-align: center;
+            color: var(--blanc-casse);
+            margin-top: 70px;
+        }
+        
+        .plats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        .plat-card {
+            background: var(--blanc-casse);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--ombre);
+            transition: var(--transition);
+            border: 1px solid rgba(200, 157, 67, 0.1);
+        }
+        
+        .plat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--ombre-portee);
+        }
+        
+        .plat-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .plat-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .plat-card:hover .plat-image img {
+            transform: scale(1.05);
+        }
+        
+        .plat-content {
+            padding: 30px;
+        }
+        
+        .plat-content h3 {
+            color: var(--bleu-nuit);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .plat-content h3 i {
+            color: var(--dore);
+        }
+        
+        .plat-ingredients {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(200, 157, 67, 0.05);
+            border-radius: var(--border-radius-sm);
+            border-left: 3px solid var(--dore);
+        }
+        
+        .plat-ingredients h4 {
+            color: var(--bleu-nuit);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .plat-ingredients ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .plat-ingredients li {
+            margin-bottom: 5px;
+            color: var(--bleu-nuit);
+            opacity: 0.8;
+            position: relative;
+        }
+        
+        .plat-ingredients li::before {
+            content: "•";
+            color: var(--dore);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+        
+        .plat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(10, 26, 42, 0.05);
+        }
+        
+        .plat-table th {
+            background: var(--bleu-nuit);
+            color: var(--blanc-casse);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .plat-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(10, 26, 42, 0.1);
+            color: var(--bleu-nuit);
+        }
+        
+        .plat-table tr:nth-child(even) {
+            background: rgba(245, 242, 232, 0.5);
+        }
+        
+        .plat-table tr:hover {
+            background: rgba(200, 157, 67, 0.1);
+        }
+        
+        .plat-tips {
+            background: rgba(10, 26, 42, 0.05);
+            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            margin-top: 20px;
+            border-left: 3px solid var(--bleu-nuit);
+        }
+        
+        .plat-tips h4 {
+            color: var(--bleu-nuit);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .plat-tips h4 i {
+            color: var(--dore);
+        }
+        
+        .region-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--dore);
+            color: var(--bleu-nuit);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .section-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: var(--bleu-nuit);
+            color: var(--blanc-casse);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .section-nav a:hover {
+            background: var(--dore);
+            color: var(--bleu-nuit);
+            transform: translateY(-3px);
+        }
+        
+        .external-links {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(10, 26, 42, 0.1);
+        }
+        
+        .external-links h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--bleu-nuit);
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .external-link {
+            display: block;
+            padding: 20px;
+            background: rgba(10, 26, 42, 0.05);
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            color: var(--bleu-nuit);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        
+        .external-link:hover {
+            background: rgba(200, 157, 67, 0.1);
+            border-color: var(--dore);
+            transform: translateY(-5px);
+        }
+        
+        .external-link h4 {
+            color: var(--bleu-nuit);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .external-link h4 i {
+            color: var(--dore);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">👩🏻‍🍳</span>
+                <span class="logo-text">Saveurs du Maroc</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="plats.html" class="active"><i class="fas fa-utensils"></i> Plats Traditionnels</a></li>
+                <li><a href="desserts.html"><i class="fas fa-cookie-bite"></i> Douceurs & Desserts</a></li>
+                <li><a href="boissons.html"><i class="fas fa-mug-hot"></i> Boissons</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- En-tête des plats -->
+    <header class="plats-hero">
+        <div class="container">
+            <h1>Plats Traditionnels Marocains</h1>
+            <p class="section-subtitle" style="color: var(--blanc-casse); opacity: 0.9; margin-bottom: 0;">
+                L'art du tajine, la magie du couscous, et les secrets des recettes ancestrales
+            </p>
+        </div>
+    </header>
+
+    <!-- Section Msemen -->
+    <section class="section" id="msemen">
+        <div class="container">
+            <h2 class="section-title">Msemen & Crêpes Marocaines</h2>
+            <p class="section-subtitle">Les délices du petit-déjeuner et du goûter</p>
+            
+            <div class="plats-grid">
+                <article class="plat-card">
+                    <div class="plat-image">
+                        <img src="assets/images/plat-msemen.png" alt="Msemen marocain">
+                    </div>
+                    <div class="plat-content">
+                        <h3><i class="fas fa-bread-slice"></i> Msemen Traditionnel <span class="region-badge">Fès</span></h3>
+                        <p>Feuilleté doré et croustillant, le msemen est une spécialité du petit-déjeuner marocain, souvent accompagné de miel, d'amlou ou de fromage frais.</p>
+                        
+                        <div class="plat-ingredients">
+                            <h4>Ingrédients principaux :</h4>
+                            <ul>
+                                <li>500g de farine blanche</li>
+                                <li>1 cuillère à café de sel</li>
+                                <li>300ml d'eau tiède</li>
+                                <li>100g de semoule fine</li>
+                                <li>Huile d'olive ou beurre</li>
+                            </ul>
+                        </div>
+                        
+                        <table class="plat-table">
+                            <thead>
+                                <tr>
+                                    <th>Accompagnement</th>
+                                    <th>Description</th>
+                                    <th>Saison</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Amlou</td>
+                                    <td>Mélange d'huile d'argan, amandes et miel</td>
+                                    <td>Toute l'année</td>
+                                </tr>
+                                <tr>
+                                    <td>Miel</td>
+                                    <td>Miel d'eucalyptus ou de thym</td>
+                                    <td>Toute l'année</td>
+                                </tr>
+                                <tr>
+                                    <td>Fromage frais</td>
+                                    <td>Jben (fromage frais marocain)</td>
+                                    <td>Printemps/Été</td>
+                                </tr>
+                                <tr>
+                                    <td>Confiture</td>
+                                    <td>Confiture d'orange ou de figue</td>
+                                    <td>Selon les fruits</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="plat-tips">
+                            <h4><i class="fas fa-lightbulb"></i> Astuce du Chef :</h4>
+                            <p>Pour des msemen parfaits, la pâte doit reposer au moins 2 heures. Cuire à feu moyen dans une poêle en fonte pour une cuisson uniforme.</p>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="plat-card">
+                    <div class="plat-image">
+                        <img src="assets/images/plat-harira.png" alt="Harira marocaine">
+                    </div>
+                    <div class="plat-content">
+                        <h3><i class="fas fa-utensil-spoon"></i> Harira Traditionnelle <span class="region-badge">Marrakech</span></h3>
+                        <p>Soupe nationale du Maroc, consommée particulièrement pendant le Ramadan pour rompre le jeûne. Riche en légumes, viande et légumineuses.</p>
+                        
+                        <div class="plat-ingredients">
+                            <h4>Ingrédients principaux :</h4>
+                            <ul>
+                                <li>200g d'agneau ou de bœuf</li>
+                                <li>1 oignon haché</li>
+                                <li>2 tomates pelées</li>
+                                <li>100g de lentilles</li>
+                                <li>100g de pois chiches trempés</li>
+                                <li>Persil, coriandre, céleri</li>
+                                <li>Épices (gingembre, curcuma, poivre)</li>
+                            </ul>
+                        </div>
+                        
+                        <table class="plat-table">
+                            <thead>
+                                <tr>
+                                    <th>Variante</th>
+                                    <th>Région</th>
+                                    <th>Temps de préparation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Harira Fassia</td>
+                                    <td>Fès</td>
+                                    <td>3 heures</td>
+                                </tr>
+                                <tr>
+                                    <td>Harira Marrakchia</td>
+                                    <td>Marrakech</td>
+                                    <td>2h30</td>
+                                </tr>
+                                <tr>
+                                    <td>Harira aux fruits de mer</td>
+                                    <td>Casablanca</td>
+                                    <td>2 heures</td>
+                                </tr>
+                                <tr>
+                                    <td>Harira végétarienne</td>
+                                    <td>Partout</td>
+                                    <td>1h30</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="plat-tips">
+                            <h4><i class="fas fa-lightbulb"></i> Secret de Famille :</h4>
+                            <p>Ajouter un peu de farine diluée dans l'eau en fin de cuisson pour épaissir la soupe. Servir avec des dattes et des chebakia.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Tajines -->
+    <section class="section" id="tajines" style="background: rgba(245, 242, 232, 0.5);">
+        <div class="container">
+            <h2 class="section-title">Les Tajines Emblématiques</h2>
+            <p class="section-subtitle">La cuisson lente qui sublime les saveurs</p>
+            
+            <div class="plats-grid">
+                <article class="plat-card">
+                    <div class="plat-image">
+                        <img src="assets/images/plat-bastilla.png" alt="Bastilla au poulet">
+                    </div>
+                    <div class="plat-content">
+                        <h3><i class="fas fa-crown"></i> Pastilla au Poulet <span class="region-badge">Fès</span></h3>
+                        <p>Tourte feuilletée sucrée-salée, joyau de la cuisine marocaine, traditionnellement servie lors des fêtes et mariages.</p>
+                        
+                        <div class="plat-ingredients">
+                            <h4>Ingrédients principaux :</h4>
+                            <ul>
+                                <li>1 poulet entier</li>
+                                <li>10 feuilles de brick</li>
+                                <li>200g d'amandes effilées</li>
+                                <li>4 œufs</li>
+                                <li>Oignons, persil, coriandre</li>
+                                <li>Épices (cannelle, safran, gingembre)</li>
+                                <li>Sucre glace et cannelle pour la finition</li>
+                            </ul>
+                        </div>
+                        
+                        <table class="plat-table">
+                            <thead>
+                                <tr>
+                                    <th>Étape</th>
+                                    <th>Temps</th>
+                                    <th>Température</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cuisson du poulet</td>
+                                    <td>1 heure</td>
+                                    <td>180°C</td>
+                                </tr>
+                                <tr>
+                                    <td>Préparation des amandes</td>
+                                    <td>20 minutes</td>
+                                    <td>160°C</td>
+                                </tr>
+                                <tr>
+                                    <td>Montage de la pastilla</td>
+                                    <td>30 minutes</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Cuisson finale</td>
+                                    <td>25 minutes</td>
+                                    <td>200°C</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="plat-tips">
+                            <h4><i class="fas fa-lightbulb"></i> Technique :</h4>
+                            <p>Superposer les feuilles de brick avec du beurre fondu entre chaque couche. La pastilla doit être croustillante à l'extérieur et moelleuse à l'intérieur.</p>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="plat-card">
+                    <div class="plat-image">
+                        <img src="assets/images/plat-tajine.png" alt="Tajine kefta">
+                    </div>
+                    <div class="plat-content">
+                        <h3><i class="fas fa-fire"></i> Tajine Kefta aux Œufs <span class="region-badge">Rabat</span></h3>
+                        <p>Boulettes de viande épicées cuites dans une sauce tomate, surmontées d'œufs pochés, un classique familial.</p>
+                        
+                        <div class="plat-ingredients">
+                            <h4>Ingrédients principaux :</h4>
+                            <ul>
+                                <li>500g de viande hachée (bœuf/agneau)</li>
+                                <li>1 oignon râpé</li>
+                                <li>Persil, coriandre hachés</li>
+                                <li>Épices (paprika, cumin, persil)</li>
+                                <li>4 tomates pelées</li>
+                                <li>4 œufs</li>
+                                <li>Huile d'olive</li>
+                            </ul>
+                        </div>
+                        
+                        <table class="plat-table">
+                            <thead>
+                                <tr>
+                                    <th>Type de Kefta</th>
+                                    <th>Viande</th>
+                                    <th>Temps de cuisson</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Kefta mkaouara</td>
+                                    <td>Bœuf/agneau</td>
+                                    <td>40 minutes</td>
+                                </tr>
+                                <tr>
+                                    <td>Kefta au citron confit</td>
+                                    <td>Agneau</td>
+                                    <td>45 minutes</td>
+                                </tr>
+                                <tr>
+                                    <td>Kefta aux pruneaux</td>
+                                    <td>Agneau</td>
+                                    <td>50 minutes</td>
+                                </tr>
+                                <tr>
+                                    <td>Kefta végétarienne</td>
+                                    <td>Lentilles/champignons</td>
+                                    <td>35 minutes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="plat-tips">
+                            <h4><i class="fas fa-lightbulb"></i> Conseil :</h4>
+                            <p>Former des boulettes de taille moyenne pour une cuisson uniforme. Ajouter les œufs en fin de cuisson et couvrir jusqu'à ce que les blancs soient pris.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
