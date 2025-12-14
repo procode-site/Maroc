@@ -284,7 +284,7 @@
     <!-- Section Msemen -->
     <section class="section" id="msemen">
         <div class="container">
-            <h2 class="section-title">Msemen & Crêpes Marocaines</h2>
+            <h2 class="section-title">Msemen & Harira</h2>
             <p class="section-subtitle">Les délices du petit-déjeuner et du goûter</p>
             
             <div class="plats-grid">
@@ -412,7 +412,7 @@
     <!-- Section Tajines -->
     <section class="section" id="tajines" style="background: rgba(245, 242, 232, 0.5);">
         <div class="container">
-            <h2 class="section-title">Les Tajines Emblématiques</h2>
+            <h2 class="section-title">Les Plats Emblématiques</h2>
             <p class="section-subtitle">La cuisson lente qui sublime les saveurs</p>
             
             <div class="plats-grid">
@@ -539,5 +539,43 @@
         </div>
     </section>
 
+<!-- AJOUTER CETTE PARTIE À LA FIN DE CHAQUE FICHIER, AVANT </body> -->
+<script>
+    // Menu mobile toggle (identique pour toutes les pages)
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Fermer le menu quand on clique sur un lien
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // Fermer le menu quand on clique en dehors
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    }
+    
+    // Fermer le menu en scrollant (sur mobile)
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+</script>    
 </body>
 </html>
