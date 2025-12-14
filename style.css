@@ -970,3 +970,199 @@ p {
         font-size: 3rem;
     }
 }
+/* ============================================
+   NAVIGATION RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex !important;
+        z-index: 1001;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--bleu-nuit);
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        gap: 0;
+        transition: var(--transition);
+        box-shadow: 0 10px 30px rgba(10, 26, 42, 0.2);
+        border-top: 1px solid rgba(200, 157, 67, 0.2);
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-menu a {
+        padding: 18px 20px;
+        justify-content: center;
+        border-bottom: 1px solid rgba(245, 242, 232, 0.1);
+        font-size: 1.1rem;
+    }
+    
+    .nav-menu a i {
+        font-size: 1.2rem;
+        width: 25px;
+    }
+}
+
+/* Navigation desktop */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none !important;
+    }
+    
+    .nav-menu {
+        display: flex !important;
+    }
+}
+
+/* ============================================
+   AMÉLIORATIONS RESPONSIVE GÉNÉRALES
+   ============================================ */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h2 {
+        font-size: 2.4rem;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .spices-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .spices-image {
+        order: -1;
+    }
+    
+    .citation p {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 150px 0 80px;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .section {
+        padding: 80px 0;
+    }
+    
+    .citation p {
+        font-size: 1.5rem;
+        padding: 0 20px;
+    }
+    
+    .spices-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .philosophy-grid,
+    .specialties-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .citation p {
+        font-size: 1.3rem;
+    }
+    
+    .citation p::before,
+    .citation p::after {
+        font-size: 3rem;
+    }
+    
+    /* Optimisation des tableaux sur mobile */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    /* Cards optimisées pour mobile */
+    .plat-card, .dessert-card, .boisson-card {
+        margin: 0 -15px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .plat-content, .dessert-content, .boisson-content {
+        padding: 20px 15px;
+    }
+}
