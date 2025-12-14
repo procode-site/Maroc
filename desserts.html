@@ -551,6 +551,43 @@
             </div>
         </div>
     </section>
-
+<!-- AJOUTER CETTE PARTIE À LA FIN DE CHAQUE FICHIER, AVANT </body> -->
+<script>
+    // Menu mobile toggle (identique pour toutes les pages)
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Fermer le menu quand on clique sur un lien
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // Fermer le menu quand on clique en dehors
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    }
+    
+    // Fermer le menu en scrollant (sur mobile)
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+</script>
 </body>
 </html>
